@@ -1293,6 +1293,7 @@ func (m *SearchMessagesResponse) GetCustomerMessages() []*CustomerMessage {
 }
 
 type DeleteMessageRequest struct {
+	// The message id.
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
