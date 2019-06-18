@@ -24,89 +24,89 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-type PostMessageRequest struct {
+type CreateMessageRequest struct {
 	// Types that are valid to be assigned to Message:
-	//	*PostMessageRequest_CustomerMessage
-	Message              isPostMessageRequest_Message `protobuf_oneof:"message"`
-	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
-	XXX_unrecognized     []byte                       `json:"-"`
-	XXX_sizecache        int32                        `json:"-"`
+	//	*CreateMessageRequest_CustomerMessage
+	Message              isCreateMessageRequest_Message `protobuf_oneof:"message"`
+	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
+	XXX_unrecognized     []byte                         `json:"-"`
+	XXX_sizecache        int32                          `json:"-"`
 }
 
-func (m *PostMessageRequest) Reset()         { *m = PostMessageRequest{} }
-func (m *PostMessageRequest) String() string { return proto.CompactTextString(m) }
-func (*PostMessageRequest) ProtoMessage()    {}
-func (*PostMessageRequest) Descriptor() ([]byte, []int) {
+func (m *CreateMessageRequest) Reset()         { *m = CreateMessageRequest{} }
+func (m *CreateMessageRequest) String() string { return proto.CompactTextString(m) }
+func (*CreateMessageRequest) ProtoMessage()    {}
+func (*CreateMessageRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8e6b3531a57ad1c6, []int{0}
 }
 
-func (m *PostMessageRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_PostMessageRequest.Unmarshal(m, b)
+func (m *CreateMessageRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateMessageRequest.Unmarshal(m, b)
 }
-func (m *PostMessageRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_PostMessageRequest.Marshal(b, m, deterministic)
+func (m *CreateMessageRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateMessageRequest.Marshal(b, m, deterministic)
 }
-func (m *PostMessageRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PostMessageRequest.Merge(m, src)
+func (m *CreateMessageRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateMessageRequest.Merge(m, src)
 }
-func (m *PostMessageRequest) XXX_Size() int {
-	return xxx_messageInfo_PostMessageRequest.Size(m)
+func (m *CreateMessageRequest) XXX_Size() int {
+	return xxx_messageInfo_CreateMessageRequest.Size(m)
 }
-func (m *PostMessageRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_PostMessageRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_PostMessageRequest proto.InternalMessageInfo
-
-type isPostMessageRequest_Message interface {
-	isPostMessageRequest_Message()
+func (m *CreateMessageRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateMessageRequest.DiscardUnknown(m)
 }
 
-type PostMessageRequest_CustomerMessage struct {
+var xxx_messageInfo_CreateMessageRequest proto.InternalMessageInfo
+
+type isCreateMessageRequest_Message interface {
+	isCreateMessageRequest_Message()
+}
+
+type CreateMessageRequest_CustomerMessage struct {
 	CustomerMessage *CustomerMessage `protobuf:"bytes,1,opt,name=customer_message,json=customerMessage,proto3,oneof"`
 }
 
-func (*PostMessageRequest_CustomerMessage) isPostMessageRequest_Message() {}
+func (*CreateMessageRequest_CustomerMessage) isCreateMessageRequest_Message() {}
 
-func (m *PostMessageRequest) GetMessage() isPostMessageRequest_Message {
+func (m *CreateMessageRequest) GetMessage() isCreateMessageRequest_Message {
 	if m != nil {
 		return m.Message
 	}
 	return nil
 }
 
-func (m *PostMessageRequest) GetCustomerMessage() *CustomerMessage {
-	if x, ok := m.GetMessage().(*PostMessageRequest_CustomerMessage); ok {
+func (m *CreateMessageRequest) GetCustomerMessage() *CustomerMessage {
+	if x, ok := m.GetMessage().(*CreateMessageRequest_CustomerMessage); ok {
 		return x.CustomerMessage
 	}
 	return nil
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*PostMessageRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _PostMessageRequest_OneofMarshaler, _PostMessageRequest_OneofUnmarshaler, _PostMessageRequest_OneofSizer, []interface{}{
-		(*PostMessageRequest_CustomerMessage)(nil),
+func (*CreateMessageRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _CreateMessageRequest_OneofMarshaler, _CreateMessageRequest_OneofUnmarshaler, _CreateMessageRequest_OneofSizer, []interface{}{
+		(*CreateMessageRequest_CustomerMessage)(nil),
 	}
 }
 
-func _PostMessageRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*PostMessageRequest)
+func _CreateMessageRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
+	m := msg.(*CreateMessageRequest)
 	// message
 	switch x := m.Message.(type) {
-	case *PostMessageRequest_CustomerMessage:
+	case *CreateMessageRequest_CustomerMessage:
 		b.EncodeVarint(1<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.CustomerMessage); err != nil {
 			return err
 		}
 	case nil:
 	default:
-		return fmt.Errorf("PostMessageRequest.Message has unexpected type %T", x)
+		return fmt.Errorf("CreateMessageRequest.Message has unexpected type %T", x)
 	}
 	return nil
 }
 
-func _PostMessageRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*PostMessageRequest)
+func _CreateMessageRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
+	m := msg.(*CreateMessageRequest)
 	switch tag {
 	case 1: // message.customer_message
 		if wire != proto.WireBytes {
@@ -114,133 +114,18 @@ func _PostMessageRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *p
 		}
 		msg := new(CustomerMessage)
 		err := b.DecodeMessage(msg)
-		m.Message = &PostMessageRequest_CustomerMessage{msg}
+		m.Message = &CreateMessageRequest_CustomerMessage{msg}
 		return true, err
 	default:
 		return false, nil
 	}
 }
 
-func _PostMessageRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*PostMessageRequest)
+func _CreateMessageRequest_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*CreateMessageRequest)
 	// message
 	switch x := m.Message.(type) {
-	case *PostMessageRequest_CustomerMessage:
-		s := proto.Size(x.CustomerMessage)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
-}
-
-type PostMessageResponse struct {
-	// The newly stored message.
-	//
-	// Types that are valid to be assigned to Message:
-	//	*PostMessageResponse_CustomerMessage
-	Message              isPostMessageResponse_Message `protobuf_oneof:"message"`
-	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
-	XXX_unrecognized     []byte                        `json:"-"`
-	XXX_sizecache        int32                         `json:"-"`
-}
-
-func (m *PostMessageResponse) Reset()         { *m = PostMessageResponse{} }
-func (m *PostMessageResponse) String() string { return proto.CompactTextString(m) }
-func (*PostMessageResponse) ProtoMessage()    {}
-func (*PostMessageResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{1}
-}
-
-func (m *PostMessageResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_PostMessageResponse.Unmarshal(m, b)
-}
-func (m *PostMessageResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_PostMessageResponse.Marshal(b, m, deterministic)
-}
-func (m *PostMessageResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PostMessageResponse.Merge(m, src)
-}
-func (m *PostMessageResponse) XXX_Size() int {
-	return xxx_messageInfo_PostMessageResponse.Size(m)
-}
-func (m *PostMessageResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_PostMessageResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_PostMessageResponse proto.InternalMessageInfo
-
-type isPostMessageResponse_Message interface {
-	isPostMessageResponse_Message()
-}
-
-type PostMessageResponse_CustomerMessage struct {
-	CustomerMessage *CustomerMessage `protobuf:"bytes,1,opt,name=customer_message,json=customerMessage,proto3,oneof"`
-}
-
-func (*PostMessageResponse_CustomerMessage) isPostMessageResponse_Message() {}
-
-func (m *PostMessageResponse) GetMessage() isPostMessageResponse_Message {
-	if m != nil {
-		return m.Message
-	}
-	return nil
-}
-
-func (m *PostMessageResponse) GetCustomerMessage() *CustomerMessage {
-	if x, ok := m.GetMessage().(*PostMessageResponse_CustomerMessage); ok {
-		return x.CustomerMessage
-	}
-	return nil
-}
-
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*PostMessageResponse) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _PostMessageResponse_OneofMarshaler, _PostMessageResponse_OneofUnmarshaler, _PostMessageResponse_OneofSizer, []interface{}{
-		(*PostMessageResponse_CustomerMessage)(nil),
-	}
-}
-
-func _PostMessageResponse_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*PostMessageResponse)
-	// message
-	switch x := m.Message.(type) {
-	case *PostMessageResponse_CustomerMessage:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CustomerMessage); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("PostMessageResponse.Message has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _PostMessageResponse_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*PostMessageResponse)
-	switch tag {
-	case 1: // message.customer_message
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CustomerMessage)
-		err := b.DecodeMessage(msg)
-		m.Message = &PostMessageResponse_CustomerMessage{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _PostMessageResponse_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*PostMessageResponse)
-	// message
-	switch x := m.Message.(type) {
-	case *PostMessageResponse_CustomerMessage:
+	case *CreateMessageRequest_CustomerMessage:
 		s := proto.Size(x.CustomerMessage)
 		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(s))
@@ -262,7 +147,7 @@ func (m *GetQuestionRequest) Reset()         { *m = GetQuestionRequest{} }
 func (m *GetQuestionRequest) String() string { return proto.CompactTextString(m) }
 func (*GetQuestionRequest) ProtoMessage()    {}
 func (*GetQuestionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{2}
+	return fileDescriptor_8e6b3531a57ad1c6, []int{1}
 }
 
 func (m *GetQuestionRequest) XXX_Unmarshal(b []byte) error {
@@ -298,7 +183,7 @@ func (m *GetQuestionResponse) Reset()         { *m = GetQuestionResponse{} }
 func (m *GetQuestionResponse) String() string { return proto.CompactTextString(m) }
 func (*GetQuestionResponse) ProtoMessage()    {}
 func (*GetQuestionResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{3}
+	return fileDescriptor_8e6b3531a57ad1c6, []int{2}
 }
 
 func (m *GetQuestionResponse) XXX_Unmarshal(b []byte) error {
@@ -408,7 +293,7 @@ func (m *GetComplaintRequest) Reset()         { *m = GetComplaintRequest{} }
 func (m *GetComplaintRequest) String() string { return proto.CompactTextString(m) }
 func (*GetComplaintRequest) ProtoMessage()    {}
 func (*GetComplaintRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{4}
+	return fileDescriptor_8e6b3531a57ad1c6, []int{3}
 }
 
 func (m *GetComplaintRequest) XXX_Unmarshal(b []byte) error {
@@ -429,121 +314,6 @@ func (m *GetComplaintRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GetComplaintRequest proto.InternalMessageInfo
 
-type GetComplaintResponse struct {
-	// An unprocessed complaint.
-	//
-	// Types that are valid to be assigned to Message:
-	//	*GetComplaintResponse_CustomerMessage
-	Message              isGetComplaintResponse_Message `protobuf_oneof:"message"`
-	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
-	XXX_unrecognized     []byte                         `json:"-"`
-	XXX_sizecache        int32                          `json:"-"`
-}
-
-func (m *GetComplaintResponse) Reset()         { *m = GetComplaintResponse{} }
-func (m *GetComplaintResponse) String() string { return proto.CompactTextString(m) }
-func (*GetComplaintResponse) ProtoMessage()    {}
-func (*GetComplaintResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{5}
-}
-
-func (m *GetComplaintResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetComplaintResponse.Unmarshal(m, b)
-}
-func (m *GetComplaintResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetComplaintResponse.Marshal(b, m, deterministic)
-}
-func (m *GetComplaintResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetComplaintResponse.Merge(m, src)
-}
-func (m *GetComplaintResponse) XXX_Size() int {
-	return xxx_messageInfo_GetComplaintResponse.Size(m)
-}
-func (m *GetComplaintResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetComplaintResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetComplaintResponse proto.InternalMessageInfo
-
-type isGetComplaintResponse_Message interface {
-	isGetComplaintResponse_Message()
-}
-
-type GetComplaintResponse_CustomerMessage struct {
-	CustomerMessage *CustomerMessage `protobuf:"bytes,1,opt,name=customer_message,json=customerMessage,proto3,oneof"`
-}
-
-func (*GetComplaintResponse_CustomerMessage) isGetComplaintResponse_Message() {}
-
-func (m *GetComplaintResponse) GetMessage() isGetComplaintResponse_Message {
-	if m != nil {
-		return m.Message
-	}
-	return nil
-}
-
-func (m *GetComplaintResponse) GetCustomerMessage() *CustomerMessage {
-	if x, ok := m.GetMessage().(*GetComplaintResponse_CustomerMessage); ok {
-		return x.CustomerMessage
-	}
-	return nil
-}
-
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*GetComplaintResponse) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _GetComplaintResponse_OneofMarshaler, _GetComplaintResponse_OneofUnmarshaler, _GetComplaintResponse_OneofSizer, []interface{}{
-		(*GetComplaintResponse_CustomerMessage)(nil),
-	}
-}
-
-func _GetComplaintResponse_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*GetComplaintResponse)
-	// message
-	switch x := m.Message.(type) {
-	case *GetComplaintResponse_CustomerMessage:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CustomerMessage); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("GetComplaintResponse.Message has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _GetComplaintResponse_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*GetComplaintResponse)
-	switch tag {
-	case 1: // message.customer_message
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CustomerMessage)
-		err := b.DecodeMessage(msg)
-		m.Message = &GetComplaintResponse_CustomerMessage{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _GetComplaintResponse_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*GetComplaintResponse)
-	// message
-	switch x := m.Message.(type) {
-	case *GetComplaintResponse_CustomerMessage:
-		s := proto.Size(x.CustomerMessage)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
-}
-
 type GetFeedbackRequest struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -554,7 +324,7 @@ func (m *GetFeedbackRequest) Reset()         { *m = GetFeedbackRequest{} }
 func (m *GetFeedbackRequest) String() string { return proto.CompactTextString(m) }
 func (*GetFeedbackRequest) ProtoMessage()    {}
 func (*GetFeedbackRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{6}
+	return fileDescriptor_8e6b3531a57ad1c6, []int{4}
 }
 
 func (m *GetFeedbackRequest) XXX_Unmarshal(b []byte) error {
@@ -575,121 +345,6 @@ func (m *GetFeedbackRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GetFeedbackRequest proto.InternalMessageInfo
 
-type GetFeedbackResponse struct {
-	// An unprocessed feedback message.
-	//
-	// Types that are valid to be assigned to Message:
-	//	*GetFeedbackResponse_CustomerMessage
-	Message              isGetFeedbackResponse_Message `protobuf_oneof:"message"`
-	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
-	XXX_unrecognized     []byte                        `json:"-"`
-	XXX_sizecache        int32                         `json:"-"`
-}
-
-func (m *GetFeedbackResponse) Reset()         { *m = GetFeedbackResponse{} }
-func (m *GetFeedbackResponse) String() string { return proto.CompactTextString(m) }
-func (*GetFeedbackResponse) ProtoMessage()    {}
-func (*GetFeedbackResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{7}
-}
-
-func (m *GetFeedbackResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetFeedbackResponse.Unmarshal(m, b)
-}
-func (m *GetFeedbackResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetFeedbackResponse.Marshal(b, m, deterministic)
-}
-func (m *GetFeedbackResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetFeedbackResponse.Merge(m, src)
-}
-func (m *GetFeedbackResponse) XXX_Size() int {
-	return xxx_messageInfo_GetFeedbackResponse.Size(m)
-}
-func (m *GetFeedbackResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetFeedbackResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetFeedbackResponse proto.InternalMessageInfo
-
-type isGetFeedbackResponse_Message interface {
-	isGetFeedbackResponse_Message()
-}
-
-type GetFeedbackResponse_CustomerMessage struct {
-	CustomerMessage *CustomerMessage `protobuf:"bytes,1,opt,name=customer_message,json=customerMessage,proto3,oneof"`
-}
-
-func (*GetFeedbackResponse_CustomerMessage) isGetFeedbackResponse_Message() {}
-
-func (m *GetFeedbackResponse) GetMessage() isGetFeedbackResponse_Message {
-	if m != nil {
-		return m.Message
-	}
-	return nil
-}
-
-func (m *GetFeedbackResponse) GetCustomerMessage() *CustomerMessage {
-	if x, ok := m.GetMessage().(*GetFeedbackResponse_CustomerMessage); ok {
-		return x.CustomerMessage
-	}
-	return nil
-}
-
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*GetFeedbackResponse) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _GetFeedbackResponse_OneofMarshaler, _GetFeedbackResponse_OneofUnmarshaler, _GetFeedbackResponse_OneofSizer, []interface{}{
-		(*GetFeedbackResponse_CustomerMessage)(nil),
-	}
-}
-
-func _GetFeedbackResponse_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*GetFeedbackResponse)
-	// message
-	switch x := m.Message.(type) {
-	case *GetFeedbackResponse_CustomerMessage:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CustomerMessage); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("GetFeedbackResponse.Message has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _GetFeedbackResponse_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*GetFeedbackResponse)
-	switch tag {
-	case 1: // message.customer_message
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CustomerMessage)
-		err := b.DecodeMessage(msg)
-		m.Message = &GetFeedbackResponse_CustomerMessage{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _GetFeedbackResponse_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*GetFeedbackResponse)
-	// message
-	switch x := m.Message.(type) {
-	case *GetFeedbackResponse_CustomerMessage:
-		s := proto.Size(x.CustomerMessage)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
-}
-
 type MoveMessageRequest struct {
 	// The message to move.
 	MessageId string `protobuf:"bytes,1,opt,name=message_id,json=messageId,proto3" json:"message_id,omitempty"`
@@ -707,7 +362,7 @@ func (m *MoveMessageRequest) Reset()         { *m = MoveMessageRequest{} }
 func (m *MoveMessageRequest) String() string { return proto.CompactTextString(m) }
 func (*MoveMessageRequest) ProtoMessage()    {}
 func (*MoveMessageRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{8}
+	return fileDescriptor_8e6b3531a57ad1c6, []int{5}
 }
 
 func (m *MoveMessageRequest) XXX_Unmarshal(b []byte) error {
@@ -749,121 +404,6 @@ func (m *MoveMessageRequest) GetNewCategory() MessageCategory {
 	return MessageCategory_NONE
 }
 
-type MoveMessageResponse struct {
-	// The message after being moved to a new category.
-	//
-	// Types that are valid to be assigned to Message:
-	//	*MoveMessageResponse_CustomerMessage
-	Message              isMoveMessageResponse_Message `protobuf_oneof:"message"`
-	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
-	XXX_unrecognized     []byte                        `json:"-"`
-	XXX_sizecache        int32                         `json:"-"`
-}
-
-func (m *MoveMessageResponse) Reset()         { *m = MoveMessageResponse{} }
-func (m *MoveMessageResponse) String() string { return proto.CompactTextString(m) }
-func (*MoveMessageResponse) ProtoMessage()    {}
-func (*MoveMessageResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{9}
-}
-
-func (m *MoveMessageResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_MoveMessageResponse.Unmarshal(m, b)
-}
-func (m *MoveMessageResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_MoveMessageResponse.Marshal(b, m, deterministic)
-}
-func (m *MoveMessageResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MoveMessageResponse.Merge(m, src)
-}
-func (m *MoveMessageResponse) XXX_Size() int {
-	return xxx_messageInfo_MoveMessageResponse.Size(m)
-}
-func (m *MoveMessageResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MoveMessageResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_MoveMessageResponse proto.InternalMessageInfo
-
-type isMoveMessageResponse_Message interface {
-	isMoveMessageResponse_Message()
-}
-
-type MoveMessageResponse_CustomerMessage struct {
-	CustomerMessage *CustomerMessage `protobuf:"bytes,1,opt,name=customer_message,json=customerMessage,proto3,oneof"`
-}
-
-func (*MoveMessageResponse_CustomerMessage) isMoveMessageResponse_Message() {}
-
-func (m *MoveMessageResponse) GetMessage() isMoveMessageResponse_Message {
-	if m != nil {
-		return m.Message
-	}
-	return nil
-}
-
-func (m *MoveMessageResponse) GetCustomerMessage() *CustomerMessage {
-	if x, ok := m.GetMessage().(*MoveMessageResponse_CustomerMessage); ok {
-		return x.CustomerMessage
-	}
-	return nil
-}
-
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*MoveMessageResponse) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _MoveMessageResponse_OneofMarshaler, _MoveMessageResponse_OneofUnmarshaler, _MoveMessageResponse_OneofSizer, []interface{}{
-		(*MoveMessageResponse_CustomerMessage)(nil),
-	}
-}
-
-func _MoveMessageResponse_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*MoveMessageResponse)
-	// message
-	switch x := m.Message.(type) {
-	case *MoveMessageResponse_CustomerMessage:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CustomerMessage); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("MoveMessageResponse.Message has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _MoveMessageResponse_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*MoveMessageResponse)
-	switch tag {
-	case 1: // message.customer_message
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CustomerMessage)
-		err := b.DecodeMessage(msg)
-		m.Message = &MoveMessageResponse_CustomerMessage{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _MoveMessageResponse_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*MoveMessageResponse)
-	// message
-	switch x := m.Message.(type) {
-	case *MoveMessageResponse_CustomerMessage:
-		s := proto.Size(x.CustomerMessage)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
-}
-
 type UpdateStatusRequest struct {
 	// The message to update the status for.
 	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
@@ -880,7 +420,7 @@ func (m *UpdateStatusRequest) Reset()         { *m = UpdateStatusRequest{} }
 func (m *UpdateStatusRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateStatusRequest) ProtoMessage()    {}
 func (*UpdateStatusRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{10}
+	return fileDescriptor_8e6b3531a57ad1c6, []int{6}
 }
 
 func (m *UpdateStatusRequest) XXX_Unmarshal(b []byte) error {
@@ -922,121 +462,6 @@ func (m *UpdateStatusRequest) GetNewStatus() Status {
 	return Status_TO_DO
 }
 
-type UpdateStatusResponse struct {
-	// The updated message.
-	//
-	// Types that are valid to be assigned to Message:
-	//	*UpdateStatusResponse_CustomerMessage
-	Message              isUpdateStatusResponse_Message `protobuf_oneof:"message"`
-	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
-	XXX_unrecognized     []byte                         `json:"-"`
-	XXX_sizecache        int32                          `json:"-"`
-}
-
-func (m *UpdateStatusResponse) Reset()         { *m = UpdateStatusResponse{} }
-func (m *UpdateStatusResponse) String() string { return proto.CompactTextString(m) }
-func (*UpdateStatusResponse) ProtoMessage()    {}
-func (*UpdateStatusResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{11}
-}
-
-func (m *UpdateStatusResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UpdateStatusResponse.Unmarshal(m, b)
-}
-func (m *UpdateStatusResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UpdateStatusResponse.Marshal(b, m, deterministic)
-}
-func (m *UpdateStatusResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateStatusResponse.Merge(m, src)
-}
-func (m *UpdateStatusResponse) XXX_Size() int {
-	return xxx_messageInfo_UpdateStatusResponse.Size(m)
-}
-func (m *UpdateStatusResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdateStatusResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UpdateStatusResponse proto.InternalMessageInfo
-
-type isUpdateStatusResponse_Message interface {
-	isUpdateStatusResponse_Message()
-}
-
-type UpdateStatusResponse_CustomerMessage struct {
-	CustomerMessage *CustomerMessage `protobuf:"bytes,1,opt,name=customer_message,json=customerMessage,proto3,oneof"`
-}
-
-func (*UpdateStatusResponse_CustomerMessage) isUpdateStatusResponse_Message() {}
-
-func (m *UpdateStatusResponse) GetMessage() isUpdateStatusResponse_Message {
-	if m != nil {
-		return m.Message
-	}
-	return nil
-}
-
-func (m *UpdateStatusResponse) GetCustomerMessage() *CustomerMessage {
-	if x, ok := m.GetMessage().(*UpdateStatusResponse_CustomerMessage); ok {
-		return x.CustomerMessage
-	}
-	return nil
-}
-
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*UpdateStatusResponse) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _UpdateStatusResponse_OneofMarshaler, _UpdateStatusResponse_OneofUnmarshaler, _UpdateStatusResponse_OneofSizer, []interface{}{
-		(*UpdateStatusResponse_CustomerMessage)(nil),
-	}
-}
-
-func _UpdateStatusResponse_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*UpdateStatusResponse)
-	// message
-	switch x := m.Message.(type) {
-	case *UpdateStatusResponse_CustomerMessage:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CustomerMessage); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("UpdateStatusResponse.Message has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _UpdateStatusResponse_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*UpdateStatusResponse)
-	switch tag {
-	case 1: // message.customer_message
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CustomerMessage)
-		err := b.DecodeMessage(msg)
-		m.Message = &UpdateStatusResponse_CustomerMessage{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _UpdateStatusResponse_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*UpdateStatusResponse)
-	// message
-	switch x := m.Message.(type) {
-	case *UpdateStatusResponse_CustomerMessage:
-		s := proto.Size(x.CustomerMessage)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
-}
-
 type GetMessageRequest struct {
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1048,7 +473,7 @@ func (m *GetMessageRequest) Reset()         { *m = GetMessageRequest{} }
 func (m *GetMessageRequest) String() string { return proto.CompactTextString(m) }
 func (*GetMessageRequest) ProtoMessage()    {}
 func (*GetMessageRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{12}
+	return fileDescriptor_8e6b3531a57ad1c6, []int{7}
 }
 
 func (m *GetMessageRequest) XXX_Unmarshal(b []byte) error {
@@ -1076,119 +501,6 @@ func (m *GetMessageRequest) GetName() string {
 	return ""
 }
 
-type GetMessageResponse struct {
-	// Types that are valid to be assigned to Message:
-	//	*GetMessageResponse_CustomerMessage
-	Message              isGetMessageResponse_Message `protobuf_oneof:"message"`
-	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
-	XXX_unrecognized     []byte                       `json:"-"`
-	XXX_sizecache        int32                        `json:"-"`
-}
-
-func (m *GetMessageResponse) Reset()         { *m = GetMessageResponse{} }
-func (m *GetMessageResponse) String() string { return proto.CompactTextString(m) }
-func (*GetMessageResponse) ProtoMessage()    {}
-func (*GetMessageResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{13}
-}
-
-func (m *GetMessageResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetMessageResponse.Unmarshal(m, b)
-}
-func (m *GetMessageResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetMessageResponse.Marshal(b, m, deterministic)
-}
-func (m *GetMessageResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetMessageResponse.Merge(m, src)
-}
-func (m *GetMessageResponse) XXX_Size() int {
-	return xxx_messageInfo_GetMessageResponse.Size(m)
-}
-func (m *GetMessageResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetMessageResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetMessageResponse proto.InternalMessageInfo
-
-type isGetMessageResponse_Message interface {
-	isGetMessageResponse_Message()
-}
-
-type GetMessageResponse_CustomerMessage struct {
-	CustomerMessage *CustomerMessage `protobuf:"bytes,1,opt,name=customer_message,json=customerMessage,proto3,oneof"`
-}
-
-func (*GetMessageResponse_CustomerMessage) isGetMessageResponse_Message() {}
-
-func (m *GetMessageResponse) GetMessage() isGetMessageResponse_Message {
-	if m != nil {
-		return m.Message
-	}
-	return nil
-}
-
-func (m *GetMessageResponse) GetCustomerMessage() *CustomerMessage {
-	if x, ok := m.GetMessage().(*GetMessageResponse_CustomerMessage); ok {
-		return x.CustomerMessage
-	}
-	return nil
-}
-
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*GetMessageResponse) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _GetMessageResponse_OneofMarshaler, _GetMessageResponse_OneofUnmarshaler, _GetMessageResponse_OneofSizer, []interface{}{
-		(*GetMessageResponse_CustomerMessage)(nil),
-	}
-}
-
-func _GetMessageResponse_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*GetMessageResponse)
-	// message
-	switch x := m.Message.(type) {
-	case *GetMessageResponse_CustomerMessage:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CustomerMessage); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("GetMessageResponse.Message has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _GetMessageResponse_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*GetMessageResponse)
-	switch tag {
-	case 1: // message.customer_message
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CustomerMessage)
-		err := b.DecodeMessage(msg)
-		m.Message = &GetMessageResponse_CustomerMessage{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _GetMessageResponse_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*GetMessageResponse)
-	// message
-	switch x := m.Message.(type) {
-	case *GetMessageResponse_CustomerMessage:
-		s := proto.Size(x.CustomerMessage)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
-}
-
 // A message for searching messages using a query.
 // A query consists of lists of names and/or categories and/or statuses.
 // Each non-empty list is used as a filter. To pass a filter, the respective
@@ -1210,7 +522,7 @@ func (m *SearchMessagesRequest) Reset()         { *m = SearchMessagesRequest{} }
 func (m *SearchMessagesRequest) String() string { return proto.CompactTextString(m) }
 func (*SearchMessagesRequest) ProtoMessage()    {}
 func (*SearchMessagesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{14}
+	return fileDescriptor_8e6b3531a57ad1c6, []int{8}
 }
 
 func (m *SearchMessagesRequest) XXX_Unmarshal(b []byte) error {
@@ -1264,7 +576,7 @@ func (m *SearchMessagesResponse) Reset()         { *m = SearchMessagesResponse{}
 func (m *SearchMessagesResponse) String() string { return proto.CompactTextString(m) }
 func (*SearchMessagesResponse) ProtoMessage()    {}
 func (*SearchMessagesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{15}
+	return fileDescriptor_8e6b3531a57ad1c6, []int{9}
 }
 
 func (m *SearchMessagesResponse) XXX_Unmarshal(b []byte) error {
@@ -1304,7 +616,7 @@ func (m *DeleteMessageRequest) Reset()         { *m = DeleteMessageRequest{} }
 func (m *DeleteMessageRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteMessageRequest) ProtoMessage()    {}
 func (*DeleteMessageRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8e6b3531a57ad1c6, []int{16}
+	return fileDescriptor_8e6b3531a57ad1c6, []int{10}
 }
 
 func (m *DeleteMessageRequest) XXX_Unmarshal(b []byte) error {
@@ -1333,20 +645,14 @@ func (m *DeleteMessageRequest) GetName() string {
 }
 
 func init() {
-	proto.RegisterType((*PostMessageRequest)(nil), "bobsknobshop.messaging.v1.PostMessageRequest")
-	proto.RegisterType((*PostMessageResponse)(nil), "bobsknobshop.messaging.v1.PostMessageResponse")
+	proto.RegisterType((*CreateMessageRequest)(nil), "bobsknobshop.messaging.v1.CreateMessageRequest")
 	proto.RegisterType((*GetQuestionRequest)(nil), "bobsknobshop.messaging.v1.GetQuestionRequest")
 	proto.RegisterType((*GetQuestionResponse)(nil), "bobsknobshop.messaging.v1.GetQuestionResponse")
 	proto.RegisterType((*GetComplaintRequest)(nil), "bobsknobshop.messaging.v1.GetComplaintRequest")
-	proto.RegisterType((*GetComplaintResponse)(nil), "bobsknobshop.messaging.v1.GetComplaintResponse")
 	proto.RegisterType((*GetFeedbackRequest)(nil), "bobsknobshop.messaging.v1.GetFeedbackRequest")
-	proto.RegisterType((*GetFeedbackResponse)(nil), "bobsknobshop.messaging.v1.GetFeedbackResponse")
 	proto.RegisterType((*MoveMessageRequest)(nil), "bobsknobshop.messaging.v1.MoveMessageRequest")
-	proto.RegisterType((*MoveMessageResponse)(nil), "bobsknobshop.messaging.v1.MoveMessageResponse")
 	proto.RegisterType((*UpdateStatusRequest)(nil), "bobsknobshop.messaging.v1.UpdateStatusRequest")
-	proto.RegisterType((*UpdateStatusResponse)(nil), "bobsknobshop.messaging.v1.UpdateStatusResponse")
 	proto.RegisterType((*GetMessageRequest)(nil), "bobsknobshop.messaging.v1.GetMessageRequest")
-	proto.RegisterType((*GetMessageResponse)(nil), "bobsknobshop.messaging.v1.GetMessageResponse")
 	proto.RegisterType((*SearchMessagesRequest)(nil), "bobsknobshop.messaging.v1.SearchMessagesRequest")
 	proto.RegisterType((*SearchMessagesResponse)(nil), "bobsknobshop.messaging.v1.SearchMessagesResponse")
 	proto.RegisterType((*DeleteMessageRequest)(nil), "bobsknobshop.messaging.v1.DeleteMessageRequest")
@@ -1357,53 +663,49 @@ func init() {
 }
 
 var fileDescriptor_8e6b3531a57ad1c6 = []byte{
-	// 730 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x56, 0xdf, 0x52, 0xd3, 0x4e,
-	0x14, 0x6e, 0x7e, 0xfd, 0x09, 0xd3, 0x03, 0x22, 0x2c, 0x85, 0xa9, 0x15, 0x67, 0x30, 0x37, 0x20,
-	0x23, 0x89, 0xe0, 0x95, 0xe3, 0x8d, 0x03, 0x2a, 0xe8, 0xd8, 0x19, 0x28, 0xa3, 0xce, 0x70, 0xc3,
-	0xe4, 0xcf, 0x12, 0x62, 0xd3, 0x3d, 0xa1, 0xbb, 0xa5, 0xd6, 0xd7, 0xd2, 0x17, 0xf1, 0x59, 0x7c,
-	0x01, 0x27, 0xc9, 0x26, 0x4d, 0x42, 0x9b, 0xb6, 0x37, 0xb9, 0xcb, 0x9e, 0x3d, 0xe7, 0x3b, 0xdf,
-	0xf9, 0x36, 0x7b, 0xce, 0xc2, 0x73, 0x13, 0x4d, 0xde, 0x61, 0x68, 0xf2, 0x1b, 0xf4, 0xf5, 0x2e,
-	0xe5, 0xdc, 0x70, 0x5c, 0xe6, 0xe8, 0x77, 0x07, 0xa3, 0x85, 0xe6, 0xf7, 0x50, 0x20, 0x79, 0x9c,
-	0x76, 0xd5, 0x46, 0xbb, 0x77, 0x07, 0xcd, 0x27, 0x0e, 0xa2, 0xe3, 0x51, 0x3d, 0x74, 0x34, 0xfb,
-	0xd7, 0x3a, 0xed, 0xfa, 0x62, 0x18, 0xc5, 0x35, 0xb7, 0xe4, 0xa6, 0xe1, 0xbb, 0xba, 0xc1, 0x18,
-	0x0a, 0x43, 0xb8, 0xc8, 0xb8, 0xdc, 0xdd, 0x99, 0x4c, 0x00, 0xcd, 0xef, 0xd4, 0x12, 0xd2, 0x51,
-	0xfd, 0x01, 0xe4, 0x0c, 0xb9, 0x68, 0x85, 0x1e, 0xb4, 0x4d, 0x6f, 0xfb, 0x94, 0x0b, 0xf2, 0x0d,
-	0x56, 0xad, 0x3e, 0x17, 0xd8, 0xa5, 0xbd, 0xab, 0x28, 0x98, 0x36, 0x94, 0x6d, 0x65, 0x77, 0xe9,
-	0x70, 0x4f, 0x9b, 0xc8, 0x57, 0x3b, 0x96, 0x21, 0x12, 0xec, 0xb4, 0xd2, 0x7e, 0x64, 0x65, 0x4d,
-	0x47, 0x35, 0x58, 0x94, 0x78, 0xea, 0x10, 0xd6, 0x33, 0x99, 0xb9, 0x8f, 0x8c, 0xd3, 0x52, 0x52,
-	0xd7, 0x81, 0x9c, 0x50, 0x71, 0x1e, 0x94, 0xea, 0x22, 0x93, 0x45, 0x07, 0x84, 0x32, 0xd6, 0x12,
-	0x09, 0x6d, 0x84, 0xa9, 0x8f, 0xb1, 0xeb, 0x7b, 0x86, 0xcb, 0x44, 0xcc, 0xe8, 0x27, 0xd4, 0xb3,
-	0xe6, 0xd2, 0x35, 0xfa, 0x40, 0xa9, 0x6d, 0x1a, 0x56, 0x27, 0xab, 0xd1, 0xc8, 0x5a, 0x22, 0xa1,
-	0x3f, 0x0a, 0x90, 0x16, 0xde, 0xd1, 0xdc, 0xaf, 0xfa, 0x14, 0x40, 0x7a, 0x5c, 0xb9, 0x76, 0x98,
-	0xb4, 0xd6, 0xae, 0x49, 0xcb, 0x47, 0x9b, 0xb4, 0x60, 0x19, 0x3d, 0xfb, 0xca, 0x32, 0x04, 0x75,
-	0xb0, 0x37, 0x6c, 0xfc, 0xb7, 0xad, 0xec, 0xae, 0x14, 0xb2, 0x92, 0xf8, 0xc7, 0x32, 0xa2, 0xbd,
-	0x84, 0x9e, 0x1d, 0x2f, 0x02, 0x38, 0x46, 0x07, 0x23, 0xb8, 0xea, 0xfc, 0x70, 0x8c, 0x0e, 0xe2,
-	0x45, 0x20, 0x67, 0xa6, 0xa4, 0x12, 0xe5, 0xfc, 0xa5, 0xc0, 0xfa, 0x17, 0xdf, 0x36, 0x04, 0xbd,
-	0x10, 0x86, 0xe8, 0xf3, 0x58, 0xcf, 0x46, 0xe2, 0x22, 0xc5, 0x8c, 0x97, 0xe4, 0x2d, 0x40, 0x20,
-	0x25, 0x0f, 0xdd, 0xa5, 0x90, 0xcf, 0x0a, 0xf8, 0x48, 0xdc, 0x1a, 0x7a, 0x76, 0xf4, 0x19, 0x20,
-	0x04, 0xea, 0x49, 0x84, 0xea, 0xcc, 0x08, 0x8c, 0x0e, 0xa2, 0xcf, 0xe0, 0x46, 0x64, 0x49, 0x97,
-	0xa8, 0xd8, 0x0e, 0xac, 0x9d, 0xd0, 0x7c, 0xa7, 0x24, 0xf0, 0x3f, 0x33, 0xba, 0xb1, 0x56, 0xe1,
-	0x77, 0xd0, 0x53, 0xd3, 0x8e, 0x25, 0x52, 0xfc, 0xad, 0xc0, 0xc6, 0x05, 0x35, 0x7a, 0xd6, 0x8d,
-	0xdc, 0x4c, 0x8e, 0xb5, 0x0e, 0x0f, 0x02, 0x6e, 0xbc, 0xa1, 0x6c, 0x57, 0x77, 0x6b, 0xed, 0x68,
-	0x41, 0x3e, 0x01, 0xc8, 0x5f, 0xd9, 0xa5, 0xc1, 0x91, 0x56, 0xe7, 0xfc, 0x99, 0x53, 0xd1, 0xe4,
-	0x35, 0x2c, 0x24, 0x07, 0x5b, 0x9d, 0xed, 0x60, 0x65, 0x80, 0x7a, 0x0b, 0x9b, 0x79, 0xd6, 0x89,
-	0x68, 0x6b, 0x79, 0xd1, 0xa2, 0x12, 0xe6, 0x52, 0xad, 0xbd, 0x9a, 0xd3, 0x8c, 0xab, 0x7b, 0x50,
-	0x7f, 0x47, 0x3d, 0x2a, 0xe8, 0xf4, 0xf3, 0x3c, 0xfc, 0xbb, 0x08, 0xb5, 0x56, 0x0c, 0x4f, 0x18,
-	0x2c, 0xa5, 0xe6, 0x16, 0xd9, 0x2f, 0xa0, 0x71, 0x7f, 0xb2, 0x36, 0xb5, 0x59, 0xdd, 0x23, 0x01,
-	0xd4, 0x4a, 0x90, 0x2f, 0x35, 0x96, 0x0a, 0xf3, 0xdd, 0x1f, 0x6a, 0x85, 0xf9, 0xc6, 0x4c, 0x3b,
-	0xb5, 0x42, 0x6e, 0x61, 0x39, 0x3d, 0x74, 0xc8, 0x14, 0x84, 0xfc, 0xd0, 0x6a, 0xea, 0x33, 0xfb,
-	0xe7, 0x4a, 0x8c, 0xa7, 0xca, 0xb4, 0x12, 0x73, 0x33, 0x69, 0x5a, 0x89, 0xf9, 0x61, 0x15, 0xe5,
-	0x4b, 0xb5, 0xdd, 0xc2, 0x7c, 0xf7, 0x27, 0x4e, 0x61, 0xbe, 0x31, 0xdd, 0x3c, 0x92, 0x34, 0xdd,
-	0xb5, 0x0a, 0x25, 0x1d, 0xd3, 0x93, 0x0b, 0x25, 0x1d, 0xd7, 0x0e, 0xd5, 0x0a, 0xe9, 0x00, 0x8c,
-	0x7a, 0x10, 0x79, 0x51, 0x2c, 0x51, 0xae, 0xc0, 0xfd, 0x19, 0xbd, 0x93, 0x64, 0x03, 0x58, 0xc9,
-	0xde, 0x5f, 0xf2, 0xb2, 0xe8, 0xf2, 0x8f, 0x6b, 0x50, 0xcd, 0x83, 0x39, 0x22, 0x92, 0xc4, 0x97,
-	0xf0, 0x30, 0x73, 0x8b, 0x49, 0x91, 0x52, 0xe3, 0xee, 0x7b, 0x73, 0x53, 0x8b, 0xde, 0xd1, 0x5a,
-	0xfc, 0xc8, 0xd6, 0xde, 0x07, 0x8f, 0x6c, 0xb5, 0x72, 0xc4, 0x61, 0xcb, 0xf1, 0x26, 0xc3, 0x9d,
-	0x29, 0x97, 0xe7, 0x8e, 0x2b, 0x6e, 0xfa, 0xa6, 0x66, 0x61, 0x57, 0x3f, 0x35, 0x86, 0xf8, 0xd5,
-	0x60, 0x9f, 0x11, 0x59, 0xf4, 0x5e, 0x1f, 0x60, 0xaf, 0x73, 0xed, 0xe1, 0x60, 0xdf, 0xa1, 0x2c,
-	0x34, 0xe8, 0x13, 0x9f, 0xe4, 0x6f, 0x92, 0x85, 0xb9, 0x10, 0xba, 0xbe, 0xfa, 0x17, 0x00, 0x00,
-	0xff, 0xff, 0x20, 0x4d, 0x70, 0x72, 0x41, 0x0c, 0x00, 0x00,
+	// 670 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x56, 0x4f, 0x6f, 0xd3, 0x4e,
+	0x10, 0x8d, 0x7f, 0xf9, 0xd1, 0x2a, 0xd3, 0x3f, 0xb4, 0xdb, 0xb4, 0x0a, 0xa1, 0x48, 0xc5, 0x97,
+	0x96, 0x8a, 0xda, 0xb4, 0x9c, 0x10, 0x17, 0xd4, 0x00, 0x2d, 0x88, 0x48, 0x34, 0x15, 0x20, 0xf5,
+	0x52, 0xad, 0xed, 0xa9, 0xe3, 0xd6, 0xd9, 0x75, 0xb3, 0x9b, 0x5a, 0xe1, 0x6b, 0xc1, 0x17, 0xe1,
+	0xca, 0xa7, 0x41, 0xb6, 0xd7, 0x89, 0xe3, 0x26, 0xa6, 0x06, 0x89, 0x9b, 0x67, 0x77, 0xe6, 0xcd,
+	0x7b, 0x63, 0xcd, 0xd3, 0xc2, 0x13, 0x8b, 0x5b, 0xe2, 0x8a, 0x71, 0x4b, 0x74, 0x79, 0x60, 0xf6,
+	0x50, 0x08, 0xea, 0x7a, 0xcc, 0x35, 0x6f, 0xf6, 0xc7, 0x81, 0x11, 0xf4, 0xb9, 0xe4, 0xe4, 0x41,
+	0x36, 0xd5, 0x18, 0xdf, 0xde, 0xec, 0x37, 0x1f, 0xba, 0x9c, 0xbb, 0x3e, 0x9a, 0x71, 0xa2, 0x35,
+	0xb8, 0x30, 0xb1, 0x17, 0xc8, 0x61, 0x52, 0xd7, 0xdc, 0x54, 0x97, 0x34, 0xf0, 0x4c, 0xca, 0x18,
+	0x97, 0x54, 0x7a, 0x9c, 0x09, 0x75, 0xbb, 0x3d, 0x9b, 0x00, 0xb7, 0x2e, 0xd1, 0x96, 0x2a, 0x51,
+	0xff, 0x0a, 0xf5, 0x56, 0x1f, 0xa9, 0xc4, 0x76, 0x9c, 0x83, 0x1d, 0xbc, 0x1e, 0xa0, 0x90, 0xe4,
+	0x0b, 0xac, 0xd8, 0x03, 0x21, 0x79, 0x0f, 0xfb, 0xe7, 0x49, 0x39, 0x36, 0xb4, 0x2d, 0x6d, 0x67,
+	0xe1, 0x60, 0xd7, 0x98, 0xc9, 0xd8, 0x68, 0xa9, 0x12, 0x05, 0x76, 0x5c, 0xe9, 0xdc, 0xb7, 0x27,
+	0x8f, 0x0e, 0x6b, 0x30, 0xaf, 0xf0, 0xf4, 0x3a, 0x90, 0x23, 0x94, 0x27, 0x51, 0x3f, 0x8f, 0x33,
+	0xd5, 0x59, 0x1f, 0xc2, 0xda, 0xc4, 0xa9, 0x08, 0x38, 0x13, 0xf8, 0x4f, 0x08, 0xad, 0xc7, 0xad,
+	0x5b, 0xbc, 0x17, 0xf8, 0xd4, 0x63, 0x32, 0x65, 0x94, 0xf0, 0x7c, 0x8b, 0xe8, 0x58, 0xd4, 0xbe,
+	0x4a, 0x4f, 0x7f, 0x68, 0x40, 0xda, 0xfc, 0x26, 0x3f, 0xb8, 0x47, 0x00, 0x0a, 0xee, 0xdc, 0x73,
+	0x62, 0x86, 0xb5, 0x4e, 0x4d, 0x9d, 0xbc, 0x73, 0x48, 0x1b, 0x16, 0xb9, 0xef, 0x9c, 0xdb, 0x54,
+	0xa2, 0xcb, 0xfb, 0xc3, 0xc6, 0x7f, 0x5b, 0xda, 0xce, 0x72, 0xa1, 0x04, 0x85, 0xdf, 0x52, 0x15,
+	0x9d, 0x05, 0xee, 0x3b, 0x69, 0x10, 0xc1, 0x31, 0x0c, 0xc7, 0x70, 0xd5, 0xf2, 0x70, 0x0c, 0xc3,
+	0x34, 0xd0, 0xbf, 0x69, 0xb0, 0xf6, 0x29, 0x70, 0xa8, 0xc4, 0x53, 0x49, 0xe5, 0x40, 0xa4, 0xa2,
+	0x1a, 0xa3, 0x19, 0x29, 0x45, 0x69, 0x48, 0x5e, 0x01, 0x44, 0x7a, 0x44, 0x9c, 0xae, 0xd4, 0x3c,
+	0x2e, 0x68, 0xaf, 0x70, 0x6b, 0xdc, 0x77, 0x92, 0xcf, 0x08, 0x21, 0x92, 0xa0, 0x10, 0xaa, 0x77,
+	0x46, 0x60, 0x18, 0x26, 0x9f, 0xfa, 0x36, 0xac, 0x1e, 0xa1, 0xcc, 0xfd, 0x07, 0x02, 0xff, 0x33,
+	0xda, 0x4b, 0xf9, 0xc6, 0xdf, 0xfa, 0x77, 0x0d, 0xd6, 0x4f, 0x91, 0xf6, 0xed, 0xae, 0x4a, 0x1e,
+	0x09, 0xac, 0xc3, 0xbd, 0x28, 0x43, 0x34, 0xb4, 0xad, 0xea, 0x4e, 0xad, 0x93, 0x04, 0xe4, 0x3d,
+	0x80, 0x9a, 0xac, 0x87, 0x91, 0xb8, 0x6a, 0xc9, 0xd9, 0x66, 0xaa, 0xc9, 0x0b, 0x98, 0x1b, 0x49,
+	0xac, 0xde, 0x4d, 0xa2, 0x2a, 0xd0, 0xaf, 0x61, 0x23, 0xcf, 0x7a, 0xb4, 0x14, 0xab, 0xf9, 0xa5,
+	0x48, 0x24, 0x94, 0xda, 0x8a, 0xce, 0x4a, 0x6e, 0x27, 0x84, 0xbe, 0x0b, 0xf5, 0xd7, 0xe8, 0xe3,
+	0x2d, 0x5b, 0x98, 0x32, 0xd5, 0x83, 0x9f, 0xf3, 0x50, 0x6b, 0xa7, 0xf0, 0x84, 0xc1, 0xd2, 0x84,
+	0xa1, 0x10, 0xb3, 0x88, 0xc8, 0x14, 0xeb, 0x69, 0x96, 0x60, 0xae, 0x57, 0xc8, 0x25, 0x2c, 0x64,
+	0xec, 0x82, 0xec, 0x15, 0x14, 0xdf, 0x36, 0x9b, 0x92, 0xbd, 0x7c, 0x58, 0xcc, 0xfa, 0x03, 0x31,
+	0x8a, 0x9b, 0xe5, 0x8d, 0xe4, 0x8f, 0x94, 0xa5, 0xb6, 0xf3, 0x3b, 0x65, 0x39, 0x7b, 0x2a, 0xdf,
+	0x2b, 0xe3, 0x65, 0x85, 0xbd, 0x6e, 0x7b, 0x5e, 0xf9, 0x29, 0x66, 0x3d, 0xa6, 0x70, 0x8a, 0x53,
+	0xcc, 0xa8, 0x64, 0xb7, 0x2e, 0xc0, 0xd8, 0x1c, 0xc8, 0xd3, 0xe2, 0x21, 0xfe, 0x95, 0xae, 0x10,
+	0x96, 0x27, 0xd7, 0x94, 0x3c, 0x2b, 0xda, 0xf1, 0x69, 0x3e, 0xd4, 0xdc, 0x2f, 0x51, 0x91, 0x78,
+	0x80, 0x5e, 0x21, 0x67, 0xb0, 0x34, 0xb1, 0xac, 0x85, 0x2b, 0x37, 0x6d, 0xad, 0x9b, 0x1b, 0x46,
+	0xf2, 0x9a, 0x30, 0xd2, 0xa7, 0x86, 0xf1, 0x26, 0x7a, 0x6a, 0xe8, 0x95, 0x43, 0x01, 0x9b, 0xae,
+	0x3f, 0x1b, 0xee, 0xa3, 0x76, 0x76, 0xe2, 0x7a, 0xb2, 0x3b, 0xb0, 0x0c, 0x9b, 0xf7, 0xcc, 0x63,
+	0x3a, 0xe4, 0x9f, 0x29, 0xfb, 0xc0, 0x39, 0x4b, 0x5e, 0x2d, 0x21, 0xef, 0x5f, 0x5d, 0xf8, 0x3c,
+	0xdc, 0x73, 0x91, 0xc5, 0x07, 0xe6, 0xcc, 0x87, 0xc9, 0xcb, 0x51, 0x60, 0xcd, 0xc5, 0xa9, 0xcf,
+	0x7f, 0x05, 0x00, 0x00, 0xff, 0xff, 0xe0, 0x3b, 0x5f, 0xf3, 0x47, 0x09, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1420,25 +722,25 @@ const _ = grpc.SupportPackageIsVersion4
 type MessagingClient interface {
 	// Stores a new message.
 	// The message status will be TO_DO.
-	PostMessage(ctx context.Context, in *PostMessageRequest, opts ...grpc.CallOption) (*PostMessageResponse, error)
+	CreateMessage(ctx context.Context, in *CreateMessageRequest, opts ...grpc.CallOption) (*CustomerMessage, error)
 	// Retrieves an open question.
 	// The message status will be set to IN_PROCESS.
-	GetQuestion(ctx context.Context, in *GetQuestionRequest, opts ...grpc.CallOption) (*GetQuestionResponse, error)
+	GetQuestion(ctx context.Context, in *GetQuestionRequest, opts ...grpc.CallOption) (*CustomerMessage, error)
 	// Retrieves an open complaint.
 	// The message status will be set to IN_PROCESS.
-	GetComplaint(ctx context.Context, in *GetComplaintRequest, opts ...grpc.CallOption) (*GetComplaintResponse, error)
+	GetComplaint(ctx context.Context, in *GetComplaintRequest, opts ...grpc.CallOption) (*CustomerMessage, error)
 	// Retrieves an open feedback message.
 	// The message status will be set to IN_PROCESS.
-	GetFeedback(ctx context.Context, in *GetFeedbackRequest, opts ...grpc.CallOption) (*GetFeedbackResponse, error)
+	GetFeedback(ctx context.Context, in *GetFeedbackRequest, opts ...grpc.CallOption) (*CustomerMessage, error)
 	// Moves a message to a different category.
 	// The message status will be reset to TO_DO.
-	MoveMessage(ctx context.Context, in *MoveMessageRequest, opts ...grpc.CallOption) (*MoveMessageResponse, error)
+	MoveMessage(ctx context.Context, in *MoveMessageRequest, opts ...grpc.CallOption) (*CustomerMessage, error)
 	// Updates a message status.
 	// If the message does not exist (because it was removed), this action will
 	// fail.
-	UpdateStatus(ctx context.Context, in *UpdateStatusRequest, opts ...grpc.CallOption) (*UpdateStatusResponse, error)
+	UpdateStatus(ctx context.Context, in *UpdateStatusRequest, opts ...grpc.CallOption) (*CustomerMessage, error)
 	// Retrieves a message by its name.
-	GetMessage(ctx context.Context, in *GetMessageRequest, opts ...grpc.CallOption) (*GetMessageResponse, error)
+	GetMessage(ctx context.Context, in *GetMessageRequest, opts ...grpc.CallOption) (*CustomerMessage, error)
 	// Searches for messages matching the query.
 	// See the SearchMessagesRequest description for query details.
 	SearchMessages(ctx context.Context, in *SearchMessagesRequest, opts ...grpc.CallOption) (*SearchMessagesResponse, error)
@@ -1454,17 +756,17 @@ func NewMessagingClient(cc *grpc.ClientConn) MessagingClient {
 	return &messagingClient{cc}
 }
 
-func (c *messagingClient) PostMessage(ctx context.Context, in *PostMessageRequest, opts ...grpc.CallOption) (*PostMessageResponse, error) {
-	out := new(PostMessageResponse)
-	err := c.cc.Invoke(ctx, "/bobsknobshop.messaging.v1.Messaging/PostMessage", in, out, opts...)
+func (c *messagingClient) CreateMessage(ctx context.Context, in *CreateMessageRequest, opts ...grpc.CallOption) (*CustomerMessage, error) {
+	out := new(CustomerMessage)
+	err := c.cc.Invoke(ctx, "/bobsknobshop.messaging.v1.Messaging/CreateMessage", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *messagingClient) GetQuestion(ctx context.Context, in *GetQuestionRequest, opts ...grpc.CallOption) (*GetQuestionResponse, error) {
-	out := new(GetQuestionResponse)
+func (c *messagingClient) GetQuestion(ctx context.Context, in *GetQuestionRequest, opts ...grpc.CallOption) (*CustomerMessage, error) {
+	out := new(CustomerMessage)
 	err := c.cc.Invoke(ctx, "/bobsknobshop.messaging.v1.Messaging/GetQuestion", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1472,8 +774,8 @@ func (c *messagingClient) GetQuestion(ctx context.Context, in *GetQuestionReques
 	return out, nil
 }
 
-func (c *messagingClient) GetComplaint(ctx context.Context, in *GetComplaintRequest, opts ...grpc.CallOption) (*GetComplaintResponse, error) {
-	out := new(GetComplaintResponse)
+func (c *messagingClient) GetComplaint(ctx context.Context, in *GetComplaintRequest, opts ...grpc.CallOption) (*CustomerMessage, error) {
+	out := new(CustomerMessage)
 	err := c.cc.Invoke(ctx, "/bobsknobshop.messaging.v1.Messaging/GetComplaint", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1481,8 +783,8 @@ func (c *messagingClient) GetComplaint(ctx context.Context, in *GetComplaintRequ
 	return out, nil
 }
 
-func (c *messagingClient) GetFeedback(ctx context.Context, in *GetFeedbackRequest, opts ...grpc.CallOption) (*GetFeedbackResponse, error) {
-	out := new(GetFeedbackResponse)
+func (c *messagingClient) GetFeedback(ctx context.Context, in *GetFeedbackRequest, opts ...grpc.CallOption) (*CustomerMessage, error) {
+	out := new(CustomerMessage)
 	err := c.cc.Invoke(ctx, "/bobsknobshop.messaging.v1.Messaging/GetFeedback", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1490,8 +792,8 @@ func (c *messagingClient) GetFeedback(ctx context.Context, in *GetFeedbackReques
 	return out, nil
 }
 
-func (c *messagingClient) MoveMessage(ctx context.Context, in *MoveMessageRequest, opts ...grpc.CallOption) (*MoveMessageResponse, error) {
-	out := new(MoveMessageResponse)
+func (c *messagingClient) MoveMessage(ctx context.Context, in *MoveMessageRequest, opts ...grpc.CallOption) (*CustomerMessage, error) {
+	out := new(CustomerMessage)
 	err := c.cc.Invoke(ctx, "/bobsknobshop.messaging.v1.Messaging/MoveMessage", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1499,8 +801,8 @@ func (c *messagingClient) MoveMessage(ctx context.Context, in *MoveMessageReques
 	return out, nil
 }
 
-func (c *messagingClient) UpdateStatus(ctx context.Context, in *UpdateStatusRequest, opts ...grpc.CallOption) (*UpdateStatusResponse, error) {
-	out := new(UpdateStatusResponse)
+func (c *messagingClient) UpdateStatus(ctx context.Context, in *UpdateStatusRequest, opts ...grpc.CallOption) (*CustomerMessage, error) {
+	out := new(CustomerMessage)
 	err := c.cc.Invoke(ctx, "/bobsknobshop.messaging.v1.Messaging/UpdateStatus", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1508,8 +810,8 @@ func (c *messagingClient) UpdateStatus(ctx context.Context, in *UpdateStatusRequ
 	return out, nil
 }
 
-func (c *messagingClient) GetMessage(ctx context.Context, in *GetMessageRequest, opts ...grpc.CallOption) (*GetMessageResponse, error) {
-	out := new(GetMessageResponse)
+func (c *messagingClient) GetMessage(ctx context.Context, in *GetMessageRequest, opts ...grpc.CallOption) (*CustomerMessage, error) {
+	out := new(CustomerMessage)
 	err := c.cc.Invoke(ctx, "/bobsknobshop.messaging.v1.Messaging/GetMessage", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1539,25 +841,25 @@ func (c *messagingClient) DeleteMessage(ctx context.Context, in *DeleteMessageRe
 type MessagingServer interface {
 	// Stores a new message.
 	// The message status will be TO_DO.
-	PostMessage(context.Context, *PostMessageRequest) (*PostMessageResponse, error)
+	CreateMessage(context.Context, *CreateMessageRequest) (*CustomerMessage, error)
 	// Retrieves an open question.
 	// The message status will be set to IN_PROCESS.
-	GetQuestion(context.Context, *GetQuestionRequest) (*GetQuestionResponse, error)
+	GetQuestion(context.Context, *GetQuestionRequest) (*CustomerMessage, error)
 	// Retrieves an open complaint.
 	// The message status will be set to IN_PROCESS.
-	GetComplaint(context.Context, *GetComplaintRequest) (*GetComplaintResponse, error)
+	GetComplaint(context.Context, *GetComplaintRequest) (*CustomerMessage, error)
 	// Retrieves an open feedback message.
 	// The message status will be set to IN_PROCESS.
-	GetFeedback(context.Context, *GetFeedbackRequest) (*GetFeedbackResponse, error)
+	GetFeedback(context.Context, *GetFeedbackRequest) (*CustomerMessage, error)
 	// Moves a message to a different category.
 	// The message status will be reset to TO_DO.
-	MoveMessage(context.Context, *MoveMessageRequest) (*MoveMessageResponse, error)
+	MoveMessage(context.Context, *MoveMessageRequest) (*CustomerMessage, error)
 	// Updates a message status.
 	// If the message does not exist (because it was removed), this action will
 	// fail.
-	UpdateStatus(context.Context, *UpdateStatusRequest) (*UpdateStatusResponse, error)
+	UpdateStatus(context.Context, *UpdateStatusRequest) (*CustomerMessage, error)
 	// Retrieves a message by its name.
-	GetMessage(context.Context, *GetMessageRequest) (*GetMessageResponse, error)
+	GetMessage(context.Context, *GetMessageRequest) (*CustomerMessage, error)
 	// Searches for messages matching the query.
 	// See the SearchMessagesRequest description for query details.
 	SearchMessages(context.Context, *SearchMessagesRequest) (*SearchMessagesResponse, error)
@@ -1569,20 +871,20 @@ func RegisterMessagingServer(s *grpc.Server, srv MessagingServer) {
 	s.RegisterService(&_Messaging_serviceDesc, srv)
 }
 
-func _Messaging_PostMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PostMessageRequest)
+func _Messaging_CreateMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateMessageRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MessagingServer).PostMessage(ctx, in)
+		return srv.(MessagingServer).CreateMessage(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bobsknobshop.messaging.v1.Messaging/PostMessage",
+		FullMethod: "/bobsknobshop.messaging.v1.Messaging/CreateMessage",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MessagingServer).PostMessage(ctx, req.(*PostMessageRequest))
+		return srv.(MessagingServer).CreateMessage(ctx, req.(*CreateMessageRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1736,8 +1038,8 @@ var _Messaging_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*MessagingServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "PostMessage",
-			Handler:    _Messaging_PostMessage_Handler,
+			MethodName: "CreateMessage",
+			Handler:    _Messaging_CreateMessage_Handler,
 		},
 		{
 			MethodName: "GetQuestion",
